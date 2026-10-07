@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panagiotis Kintis, PhD: cybersecurity, AI and large-scale data analytics</title>
+<meta name="description" content="Panagiotis Kintis, PhD. I lead research and engineering in cybersecurity, AI, and large-scale data analytics projects.">
+<link rel="canonical" href="https://kintis.me/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kintis.me/">
+<meta property="og:title" content="Panagiotis Kintis, PhD">
+<meta property="og:description" content="I lead research and engineering in cybersecurity, AI, and large-scale data analytics projects.">
+<meta property="og:image" content="https://kintis.me/assets/portrait-square.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>document.documentElement.className = 'js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ground: #FFFFFF;
+  --ink: #1B1F2A;
+  --muted: #565C6E;
+  --grey: #C6CAD3;
+  --rule: #E3E6EC;
+  --blue: #2F6BFF;
+  --violet: #8A3FFC;
+  --amber: #F2A30F;
+  --amber-line: #B87400;
+  --blue-tint: #EEF3FF;
+  --violet-tint: #F4EEFF;
+  --amber-tint: #FEF5E1;
+  --gutter: max(24px, calc((100vw - 1200px) / 2));
+  --spread: 16px;
+  --font: "Lexend", "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.62;
+  overflow-x: hidden;
+}
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+img, svg, canvas { display: block; }
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--grey); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+a:hover { text-decoration-color: var(--ink); }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+strong { font-weight: 600; }
+.skip { position: absolute; left: 16px; top: -60px; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 6px; z-index: 10; text-decoration: none; }
+.skip:focus { top: 12px; }
+.no-js .js-only { display: none !important; }
+
+/* First screen */
+.first { position: relative; }
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px 28px; flex-wrap: wrap;
+  min-height: 64px; padding: 14px var(--gutter);
+  background: var(--ground); position: relative; z-index: 2;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.site { font-weight: 600; font-size: 16px; text-decoration: none; }
+.social { display: flex; align-items: center; gap: 2px; }
+.social a { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; }
+.social a:hover { background: #F3F4F7; }
+.social svg { width: 18px; height: 18px; fill: none; stroke: var(--ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.nav { display: flex; flex-wrap: wrap; gap: 6px 28px; font-size: 15px; font-weight: 400; }
+.nav a { text-decoration: none; padding: 4px 0; border-bottom: 1.5px solid transparent; }
+.nav a:hover { border-bottom-color: var(--ink); }
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 33.5rem) minmax(0, 1fr);
+  column-gap: 28px;
+  height: 626px;
+  padding-left: var(--gutter);
+}
+.hero-text { align-self: center; padding-bottom: 20px; position: relative; z-index: 1; background: var(--ground); }
+.who { display: flex; align-items: center; gap: 24px; }
+.face { order: -1; flex: none; width: 196px; height: 196px; border-radius: 50%; object-fit: cover; }
+.name { font-size: 24px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+.headline {
+  margin-top: 22px;
+  font-size: clamp(34px, 3.3vw, 47px); font-weight: 600; line-height: 1.1; letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+.role { margin-top: 24px; font-size: 20px; line-height: 1.5; max-width: 27em; }
+.role .f { text-decoration: underline; text-decoration-thickness: 2.5px; text-underline-offset: 5px; text-decoration-skip-ink: none; }
+.role .f-blue { text-decoration-color: var(--blue); }
+.role .f-violet { text-decoration-color: var(--violet); }
+.role .f-amber { text-decoration-color: var(--amber); }
+.cred { margin-top: 5px; font-size: 17px; font-weight: 400; line-height: 1.5; color: var(--muted); }
+.cred .loc { display: block; }
+.cred a { white-space: nowrap; }
+.pause {
+  position: absolute; right: 24px; bottom: 16px; z-index: 1;
+  display: grid; place-items: center; width: 36px; height: 36px; padding: 0;
+  color: var(--ink); background: var(--ground); border: 1.5px solid var(--ink); border-radius: 8px; cursor: pointer;
+}
+.pause:hover { background: #F3F4F7; }
+.pause svg { width: 12px; height: 12px; fill: var(--ink); }
+.pause .i-play, .pause[data-paused="true"] .i-pause { display: none; }
+.pause[data-paused="true"] .i-play { display: block; }
+.note { position: absolute; left: var(--gutter); bottom: 14px; z-index: 1; max-width: 26em; font-size: 14.5px; font-weight: 400; line-height: 1.5; }
+.status:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .pause { display: none; } }
+
+.field { position: relative; overflow: hidden; }
+.field canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 400 15px/1.2 var(--font); color: var(--ink); white-space: nowrap;
+  background: var(--ground); border: 1.5px solid var(--c-line, var(--ink)); border-radius: 8px;
+  padding: 6px 11px 6px 9px; cursor: pointer;
+}
+.tag .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c); flex: none; }
+.tag:hover { background: var(--c-tint); }
+.tag[aria-pressed="true"] { background: var(--c-tint); box-shadow: inset 0 0 0 1px var(--c-line); font-weight: 600; }
+.tag-blue { --c: var(--blue); --c-line: var(--blue); --c-tint: var(--blue-tint); }
+.tag-violet { --c: var(--violet); --c-line: var(--violet); --c-tint: var(--violet-tint); }
+.tag-amber { --c: var(--amber); --c-line: var(--amber-line); --c-tint: var(--amber-tint); }
+.field .tag { position: absolute; left: 0; top: 0; opacity: 0; transform: translate(-50%, -50%); will-change: opacity; }
+.field .tag[aria-pressed="true"] { font-weight: 400; }
+.still { position: absolute; inset: 0; display: grid; place-items: center; }
+.still-box { position: relative; width: min(100%, 820px); aspect-ratio: 820 / 626; }
+.still-box svg { width: 100%; height: 100%; }
+.still-box span {
+  position: absolute; transform: translate(-50%, -50%); white-space: nowrap;
+  font-size: 15px; font-weight: 400; line-height: 1.2; background: var(--ground);
+  border: 1.5px solid var(--c-line); border-radius: 8px; padding: 6px 11px;
+}
+
+/* Sections */
+.wrap { padding: 0 var(--gutter); }
+.section { padding-top: 76px; }
+h2 { font-size: 34px; font-weight: 600; line-height: 1.15; letter-spacing: -0.022em; }
+h3 { font-size: 21px; font-weight: 600; line-height: 1.3; letter-spacing: -0.008em; }
+.sec-head p { margin-top: 10px; max-width: 40em; color: var(--muted); font-weight: 400; font-size: 16px; }
+.key { margin-top: 20px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px 10px; }
+.key-note { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 400; color: var(--muted); margin-left: 8px; }
+.key-static { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 15px; font-weight: 400; }
+.key-static span { display: inline-flex; align-items: center; gap: 8px; }
+.key-static i { width: 9px; height: 9px; border-radius: 50%; }
+
+.caps { margin-top: 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 68px 76px; }
+.cap-lead { grid-column: 1 / -1; }
+.cap.cap-lead p { font-size: 23px; line-height: 1.46; max-width: 37em; letter-spacing: -0.005em; }
+.cap-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-content: start; }
+#ai p { font-size: 20px; line-height: 1.6; max-width: 29em; }
+.cap { position: relative; align-self: start; border-radius: 6px; transition: background-color .25s ease, box-shadow .25s ease; scroll-margin-top: 40px; }
+.cap p { margin-top: 10px; max-width: 34em; }
+.mark { width: 66px; height: 36px; margin-bottom: 12px; overflow: visible; }
+.key-note .mark { width: 44px; height: 24px; margin: 0; }
+.mark circle { transition: fill .25s ease; }
+.d-blue { fill: var(--blue); } .d-violet { fill: var(--violet); } .d-amber { fill: var(--amber); }
+.d-ink { fill: var(--ink); }
+.o-ink { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.caps[data-sel="blue"] .mark circle:not(.d-blue):not(.d-ink),
+.caps[data-sel="violet"] .mark circle:not(.d-violet):not(.d-ink),
+.caps[data-sel="amber"] .mark circle:not(.d-amber):not(.d-ink) { fill: var(--grey); }
+.caps[data-sel="blue"] .cap.is-on { --t: var(--blue-tint); }
+.caps[data-sel="violet"] .cap.is-on { --t: var(--violet-tint); }
+.caps[data-sel="amber"] .cap.is-on { --t: var(--amber-tint); }
+.cap.is-on { background: var(--t); box-shadow: 0 0 0 var(--spread) var(--t); }
+.holds {
+  grid-column: 1 / -1; position: relative; margin-top: 8px;
+  border: 1.5px solid var(--ink); border-radius: 30px;
+  padding: 44px 40px 40px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px 76px;
+}
+.holds-legend {
+  position: absolute; top: 0; left: 30px; transform: translateY(-50%);
+  background: var(--ground); padding: 0 12px; font-size: 15px; font-weight: 400; line-height: 1.3;
+}
+
+.record { margin-top: 36px; display: grid; gap: 24px; }
+.record > li { display: grid; grid-template-columns: 16.5em minmax(0, 1fr); column-gap: 40px; align-items: baseline; }
+.record h3 { font-size: 19px; }
+.record p { max-width: 36em; }
+.profiles { display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 400; font-size: 16px; }
+details { margin-top: 14px; }
+summary {
+  display: inline-flex; align-items: center; gap: 10px; list-style: none; cursor: pointer;
+  font-size: 15px; font-weight: 400; line-height: 1;
+  border: 1.5px solid var(--ink); border-radius: 8px; padding: 10px 14px;
+}
+summary::-webkit-details-marker { display: none; }
+summary:hover { background: #F3F4F7; }
+summary::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--grey); }
+details[open] summary::before { background: var(--ink); }
+summary .s-hide, details[open] summary .s-show { display: none; }
+details[open] summary .s-hide { display: inline; }
+.pubs { margin-top: 24px; columns: 2; column-gap: 48px; }
+.pubs li { font-size: 15px; line-height: 1.55; max-width: 38em; break-inside: avoid; padding-bottom: 24px; }
+.pubs .t { display: block; font-weight: 400; font-size: 16px; }
+.pubs .v { display: block; color: var(--muted); font-weight: 400; }
+
+.bg { margin-top: 40px; display: grid; grid-template-columns: 168px minmax(0, 1fr) minmax(0, 1fr); gap: 36px 60px; align-items: start; }
+.photo img { width: 168px; height: 210px; object-fit: cover; border-radius: 8px; }
+.photo figcaption { margin-top: 10px; font-size: 14.5px; font-weight: 400; line-height: 1.45; color: var(--muted); }
+.bio p { max-width: 33em; }
+.bio p + p { margin-top: 14px; }
+.gloss { color: var(--muted); font-size: 15.5px; }
+.cv h3 { font-size: 17px; }
+.cv h3 + dl, .cv h3 + ul { margin-top: 10px; }
+.roles { display: grid; grid-template-columns: 8.6em minmax(0, 1fr); gap: 9px 14px; font-size: 15.5px; line-height: 1.5; }
+.roles dt { font-weight: 400; color: var(--muted); }
+.edu { font-size: 15.5px; line-height: 1.5; }
+.edu li + li { margin-top: 8px; }
+.cv h3:not(:first-child) { margin-top: 26px; }
+
+.likes-sub { margin-top: 10px; color: var(--muted); font-weight: 400; font-size: 16px; }
+.likes { margin-top: 36px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 36px 76px; align-items: center; }
+.likes-text p { font-size: 20px; line-height: 1.6; max-width: 27em; }
+.likes-text p + p { margin-top: 14px; }
+.teams { display: flex; align-items: center; gap: 30px; }
+.teams li { flex: 0 1 auto; min-width: 0; }
+.teams img { max-width: 100%; height: auto; filter: grayscale(1); opacity: .65; transition: filter .25s ease, opacity .25s ease; }
+.teams li:hover img { filter: none; opacity: 1; }
+@media (hover: none) { .teams img { filter: none; opacity: 1; } }
+
+.contact { margin-top: 76px; padding-top: 44px; padding-bottom: 56px; border-top: 1px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr; gap: 20px 76px; align-items: end; }
+.contact p { margin-top: 10px; max-width: 34em; }
+.stray { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--grey); margin-right: 10px; vertical-align: 0.05em; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 30px; font-size: 20px; font-weight: 400; }
+.links .soon { color: var(--muted); }
+.foot { padding: 0 var(--gutter) 40px; font-size: 14.5px; font-weight: 400; color: var(--muted); }
+
+@media (max-width: 1240px) {
+  .likes { grid-template-columns: 1fr; }
+}
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); }
+  .caps, .holds, .contact { column-gap: 48px; }
+  .pubs { columns: 1; }
+  #ai, .cap-stack { grid-column: 1 / -1; }
+  #ai p { max-width: 37em; }
+  .cap-stack { gap: 48px; }
+  .bg { grid-template-columns: 168px minmax(0, 1fr); }
+  .cv { grid-column: 1 / -1; }
+  .face { width: 164px; height: 164px; }
+  .name { font-size: 21px; }
+  .cred { font-size: 15.5px; }
+}
+@media (max-width: 960px) {
+  .face { width: 132px; height: 132px; }
+  .name { font-size: 20px; }
+}
+@media (max-width: 860px) {
+  :root { --gutter: 16px; --spread: 12px; }
+  body { font-size: 16.5px; }
+  .top { min-height: 0; padding-top: 14px; padding-bottom: 6px; }
+  .nav { gap: 2px 16px; font-size: 14px; }
+  .cap.cap-lead p { font-size: 19px; }
+  .cap-stack { grid-template-columns: 1fr; gap: 40px; }
+  #ai p { font-size: inherit; line-height: inherit; max-width: 34em; }
+  .hero { display: block; height: auto; padding-left: 0; }
+  .hero-text { padding: 8px var(--gutter) 0; }
+  .who { gap: 14px; }
+  .face { width: 128px; height: 128px; }
+  .name { font-size: 19px; }
+  .social a { width: 36px; height: 36px; }
+  .pause { right: 16px; bottom: 8px; width: 40px; height: 40px; }
+  .still-box { width: min(100%, 408px); }
+  .note { right: var(--gutter); bottom: auto; top: calc(100% + 2px); max-width: none; font-size: 13.5px; }
+  #capabilities { padding-top: 58px; }
+  .likes { gap: 28px; margin-top: 28px; }
+  .likes-text p { font-size: 18px; }
+  .teams { gap: clamp(10px, 3.4vw, 28px); }
+  .headline { margin-top: 12px; font-size: clamp(29px, 8vw, 40px); }
+  .role { margin-top: 16px; font-size: 18px; }
+  .cred { margin-top: 3px; font-size: 14.5px; line-height: 1.45; }
+  .field { height: 312px; margin-top: 4px; }
+  .field .tag, .still-box span { font-size: 13.5px; padding: 5px 9px 5px 8px; }
+  .section { padding-top: 48px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 19.5px; }
+  .caps, .holds, .contact { grid-template-columns: 1fr; }
+  .record > li { grid-template-columns: 1fr; row-gap: 4px; }
+  .caps { gap: 40px; margin-top: 34px; }
+  .holds { padding: 34px 20px 26px; border-radius: 24px; gap: 34px; }
+  .holds-legend { left: 16px; padding: 0 8px; font-size: 14px; }
+  .key-note { margin-left: 0; }
+  .bg { grid-template-columns: 1fr; gap: 28px; }
+  .photo { display: flex; align-items: flex-end; gap: 14px; }
+  .photo img { width: 140px; height: 175px; }
+  .photo figcaption { margin-top: 0; }
+  .contact { margin-top: 56px; padding-top: 36px; }
+  .links { font-size: 18px; }
+}
+@media (max-width: 520px) {
+  .top { row-gap: 2px; }
+  .brand { flex: 1 0 100%; justify-content: space-between; }
+  .nav { flex-wrap: nowrap; gap: 0 13px; font-size: 13px; white-space: nowrap; }
+}
+@media (max-width: 400px) {
+  .nav a:first-child { display: none; }
+  .roles { grid-template-columns: 1fr; row-gap: 0; }
+  .roles dd + dt { margin-top: 9px; }
+  .links { flex-direction: column; gap: 6px; }
+  .face { width: 104px; height: 104px; }
+  .name { font-size: 18px; }
+}
+@media (max-width: 350px) {
+  .who { gap: 12px; }
+  .face { width: 84px; height: 84px; }
+  .name { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#capabilities">Skip to capabilities</a>
+
+<div class="first" id="top">
+  <header class="top">
+    <div class="brand">
+      <a class="site" href="#top">kintis.me</a>
+      <ul class="social" aria-label="Profiles">
+        <li><a href="https://github.com/panagiotious" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/kintis" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+        <li><a href="mailto:hello@kintis.me" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2.5 6.5 9.5 6.5 9.5-6.5"/></svg></a></li>
+        <li><a href="https://www.instagram.com/panagiotious/" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a></li>
+      </ul>
+    </div>
+    <nav class="nav" aria-label="Sections">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#ai">AI</a>
+      <a href="#government">Government R&amp;D</a>
+      <a href="#record">Record</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-text">
+      <div class="who">
+        <div>
+          <h1 class="name">Panagiotis Kintis, PhD</h1>
+          <p class="cred">Chief Scientist, <a href="https://voreas.tech">Voreas Laboratories</a>. <span class="loc">Atlanta, Georgia.</span></p>
+        </div>
+        <img class="face" src="assets/portrait-square.jpg" width="196" height="196" alt="Panagiotis Kintis, head and shoulders, in a navy suit">
+      </div>
+      <p class="headline">Clear answers from noisy data, using AI, at scale.</p>
+      <p class="role">I lead research and engineering in <span class="f f-blue">cybersecurity</span>, <span class="f f-violet">AI</span>, and <span class="f f-amber">large-scale data analytics</span> projects.</p>
+    </div>
+
+    <div class="field" id="field">
+      <canvas id="plot" class="js-only" aria-hidden="true"></canvas>
+      <div class="js-only" role="group" aria-label="Highlight capabilities by field" id="tags">
+        <button type="button" class="tag tag-blue" data-k="0" aria-pressed="false"><span class="dot"></span>cybersecurity</button>
+        <button type="button" class="tag tag-violet" data-k="1" aria-pressed="false"><span class="dot"></span>AI</button>
+        <button type="button" class="tag tag-amber" data-k="2" aria-pressed="false"><span class="dot"></span>large-scale data analytics</button>
+      </div>
+      <button type="button" class="pause js-only" id="pause" data-paused="false" aria-label="Pause animation" title="Pause animation">
+        <svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="1.5" y="1" width="3.2" height="10" rx="1"/><rect x="7.3" y="1" width="3.2" height="10" rx="1"/></svg>
+        <svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 1.2v9.6a.6.6 0 0 0 .9.5l8-4.8a.6.6 0 0 0 0-1l-8-4.8a.6.6 0 0 0-.9.5z"/></svg>
+      </button>
+      <noscript>
+        <div class="still"><div class="still-box"><svg viewBox="0 0 820 626" role="img" aria-label="A scatter of points sorted into three clusters: cybersecurity, AI and large-scale data analytics. A few grey points belong to none."><path d="M346 189L347 201L347 214L345 227L342 239L337 251L331 263L323 273L314 283L304 292L293 299L281 305L269 310L256 313L243 315L230 315L216 314L204 311L191 307L179 302L168 296L158 288L148 279L140 270L133 259L127 248L122 237L119 225L117 213L116 201L116 189L116 177L118 165L120 153L123 142L127 130L132 118L138 107L145 96L154 85L164 76L176 68L188 62L202 58L216 56L230 57L243 59L256 64L268 70L280 77L290 85L299 94L307 103L314 113L321 122L327 133L333 143L337 154L341 165L344 177z" fill="#EEF3FF" stroke="#2F6BFF" stroke-opacity=".78" stroke-width="1.5"/><path d="M710 221L706 233L701 245L695 256L689 266L682 276L675 285L668 293L661 302L653 310L644 318L634 326L624 333L613 340L601 345L588 349L574 351L560 352L546 350L532 346L519 340L507 332L496 322L488 311L481 299L475 286L471 273L469 259L468 246L468 233L469 221L471 209L474 197L477 185L482 174L488 163L495 153L502 144L511 135L520 128L530 121L540 115L551 109L563 105L575 101L588 99L601 97L614 97L627 98L641 101L655 105L667 111L679 119L690 129L699 140L706 153L710 166L713 180L714 194L712 208z" fill="#F4EEFF" stroke="#8A3FFC" stroke-opacity=".78" stroke-width="1.5"/><path d="M516 460L516 473L515 486L512 499L508 512L502 524L495 535L486 545L476 554L466 561L454 567L442 572L430 575L417 578L405 579L392 579L380 578L368 576L356 573L344 569L332 565L321 559L310 552L299 544L290 535L281 524L274 513L269 500L265 487L264 474L264 460L266 447L269 434L274 422L280 410L287 400L295 390L304 381L313 372L323 364L333 358L344 351L355 346L367 342L380 339L392 337L405 337L418 338L431 341L443 346L455 352L466 359L476 368L485 377L492 388L499 399L505 410L509 422L513 435L515 447z" fill="#FEF5E1" stroke="#B87400" stroke-opacity=".78" stroke-width="1.5"/><path d="M173 411h.01M798 513h.01M131 595h.01M175 559h.01M415 75h.01M754 119h.01M140 354h.01M27 516h.01M741 401h.01M169 515h.01M615 559h.01M669 54h.01M612 553h.01M772 199h.01M784 100h.01M745 435h.01M625 427h.01M235 544h.01M112 459h.01M140 577h.01M146 435h.01M561 596h.01M420 99h.01M182 480h.01M34 332h.01M531 32h.01M624 28h.01M713 541h.01M354 39h.01M779 267h.01M629 549h.01" fill="none" stroke="#C6CAD3" stroke-width="5.4" stroke-linecap="round"/><path d="M234 173h.01M237 103h.01M217 167h.01M100 163h.01M253 231h.01M204 240h.01M224 166h.01M284 173h.01M250 172h.01M182 189h.01M296 163h.01M153 184h.01M255 113h.01M262 156h.01M145 90h.01M245 343h.01M245 264h.01M230 238h.01M272 108h.01M194 176h.01M246 248h.01M220 243h.01M223 213h.01M218 204h.01M178 229h.01M274 87h.01M205 228h.01M285 131h.01M251 138h.01M287 187h.01M164 220h.01M249 242h.01M157 162h.01M247 187h.01M209 339h.01M210 238h.01M253 197h.01M137 147h.01M260 233h.01M243 141h.01M229 192h.01M216 221h.01M248 211h.01M209 240h.01M179 125h.01M287 110h.01M146 225h.01M175 183h.01M197 75h.01M333 204h.01M225 191h.01M202 171h.01M291 213h.01M220 175h.01M245 110h.01M198 257h.01M220 204h.01M306 233h.01M258 167h.01M195 69h.01M119 192h.01M265 227h.01M175 221h.01M234 173h.01M149 236h.01M332 211h.01M199 188h.01M307 262h.01M253 175h.01M226 51h.01M198 195h.01M228 155h.01M156 232h.01M309 185h.01M177 196h.01M232 215h.01M275 155h.01M230 104h.01M225 127h.01M274 214h.01M268 213h.01M223 185h.01M332 231h.01M214 135h.01M305 176h.01M264 154h.01M172 111h.01M225 175h.01M255 163h.01M196 202h.01M182 144h.01M268 190h.01M227 183h.01M180 183h.01M253 173h.01M255 225h.01M241 315h.01M199 211h.01M246 160h.01M196 301h.01M170 250h.01M212 77h.01M253 191h.01M257 251h.01M110 244h.01M304 242h.01M261 82h.01M176 195h.01M226 173h.01M197 222h.01M197 209h.01M199 182h.01M189 262h.01M293 267h.01M265 276h.01M286 180h.01M177 111h.01M227 257h.01M208 171h.01M294 280h.01M149 190h.01M109 112h.01M264 173h.01M288 248h.01M165 155h.01M294 181h.01M290 226h.01M207 120h.01M220 219h.01M254 193h.01M255 197h.01M189 184h.01M275 223h.01M279 222h.01M302 142h.01M259 150h.01M229 140h.01M225 239h.01M266 179h.01M293 235h.01M188 232h.01M281 174h.01M199 148h.01M185 173h.01M200 173h.01" fill="none" stroke="#2F6BFF" stroke-width="5.4" stroke-linecap="round"/><path d="M588 210h.01M603 232h.01M598 265h.01M551 269h.01M555 169h.01M549 205h.01M594 298h.01M636 249h.01M622 158h.01M607 215h.01M663 151h.01M583 194h.01M553 213h.01M533 191h.01M494 141h.01M513 285h.01M527 260h.01M614 270h.01M691 221h.01M559 255h.01M680 198h.01M603 254h.01M724 239h.01M508 163h.01M629 198h.01M539 162h.01M598 238h.01M582 216h.01M523 219h.01M581 176h.01M585 290h.01M557 289h.01M572 221h.01M518 233h.01M521 222h.01M561 247h.01M567 184h.01M621 191h.01M520 164h.01M640 215h.01M602 75h.01M563 263h.01M525 222h.01M475 200h.01M541 267h.01M670 303h.01M466 319h.01M610 127h.01M669 115h.01M636 278h.01M560 268h.01M495 249h.01M636 304h.01M605 220h.01M615 262h.01M597 294h.01M577 305h.01M636 189h.01M588 232h.01M532 273h.01M542 177h.01M668 295h.01M614 238h.01M562 144h.01M538 241h.01M573 152h.01M639 239h.01M459 277h.01M656 163h.01M629 198h.01M665 86h.01M620 173h.01M536 183h.01M570 301h.01M610 151h.01M629 213h.01M598 189h.01M530 365h.01M546 203h.01M625 182h.01M577 185h.01M551 238h.01M537 244h.01M575 269h.01M565 211h.01M565 170h.01M603 230h.01M671 211h.01M627 203h.01M692 276h.01M648 251h.01M536 275h.01M659 192h.01M605 313h.01M586 119h.01M668 200h.01M583 126h.01M673 128h.01M549 148h.01M492 241h.01M515 262h.01M630 283h.01M600 341h.01M512 204h.01M597 211h.01M502 351h.01M601 276h.01M527 170h.01M624 162h.01M578 216h.01M566 128h.01M623 228h.01M586 283h.01M597 196h.01M602 224h.01M672 238h.01M583 179h.01M616 200h.01M642 240h.01M546 199h.01M566 223h.01M451 240h.01M554 219h.01M571 254h.01M538 246h.01M616 244h.01M531 202h.01M625 261h.01M646 192h.01M579 240h.01M626 329h.01M662 284h.01M534 93h.01M605 111h.01M553 359h.01M643 234h.01M696 229h.01M617 273h.01M616 146h.01M592 161h.01M546 150h.01" fill="none" stroke="#8A3FFC" stroke-width="5.4" stroke-linecap="round"/><path d="M310 427h.01M345 410h.01M436 484h.01M404 414h.01M356 469h.01M412 383h.01M442 473h.01M402 434h.01M308 537h.01M373 499h.01M359 500h.01M476 491h.01M407 462h.01M531 421h.01M417 444h.01M326 590h.01M400 485h.01M370 413h.01M434 382h.01M366 519h.01M426 493h.01M526 518h.01M375 400h.01M383 488h.01M414 508h.01M474 447h.01M347 349h.01M338 436h.01M375 393h.01M429 502h.01M343 451h.01M442 499h.01M354 352h.01M358 451h.01M353 405h.01M387 543h.01M420 383h.01M430 522h.01M359 443h.01M323 415h.01M382 516h.01M275 517h.01M391 452h.01M441 431h.01M407 505h.01M417 402h.01M471 421h.01M406 491h.01M481 432h.01M418 489h.01M361 481h.01M402 507h.01M481 442h.01M362 440h.01M361 429h.01M365 431h.01M377 478h.01M368 463h.01M426 397h.01M325 488h.01M387 509h.01M331 495h.01M326 552h.01M409 454h.01M459 402h.01M409 421h.01M361 490h.01M426 452h.01M365 416h.01M442 490h.01M405 352h.01M319 464h.01M426 462h.01M502 481h.01M494 362h.01M352 506h.01M475 359h.01M372 512h.01M348 466h.01M383 425h.01M448 418h.01M348 458h.01M393 377h.01M397 495h.01M443 405h.01M374 468h.01M247 471h.01M384 553h.01M364 438h.01M371 324h.01M402 363h.01M411 490h.01M412 520h.01M396 492h.01M449 472h.01M442 494h.01M437 467h.01M322 453h.01M392 545h.01M349 473h.01" fill="none" stroke="#F2A30F" stroke-width="5.4" stroke-linecap="round"/></svg><span class="tag-blue" style="left:28.0%;top:10.4%">cybersecurity</span><span class="tag-violet" style="left:71.7%;top:16.1%">AI</span><span class="tag-amber" style="left:47.8%;top:92.4%">large-scale data analytics</span></div></div>
+      </noscript>
+    </div>
+    <div class="note js-only" id="note"><p class="status" id="status" aria-live="polite"></p></div>
+  </div>
+</div>
+
+<main>
+  <section class="section wrap" id="capabilities" aria-labelledby="h-caps">
+    <div class="sec-head">
+      <h2 id="h-caps">Capabilities</h2>
+      <p>Six areas of work. The markers show which of the three fields each one draws on.</p>
+      <div class="key js-only" role="group" aria-label="Highlight capabilities by field">
+        <button type="button" class="tag tag-blue" data-k="0" aria-pressed="false"><span class="dot"></span>cybersecurity</button>
+        <button type="button" class="tag tag-violet" data-k="1" aria-pressed="false"><span class="dot"></span>AI</button>
+        <button type="button" class="tag tag-amber" data-k="2" aria-pressed="false"><span class="dot"></span>large-scale data analytics</button>
+        <span class="key-note"><svg class="mark" viewBox="0 0 44 24" width="44" height="24" aria-hidden="true"><path class="o-ink" d="M22 2.5c9.5 0 19.5 2.6 19.5 9.6S31.5 21.5 22 21.5 2.5 19 2.5 12.1 12.5 2.5 22 2.5z"/><circle class="d-ink" cx="13" cy="12.5" r="2.2"/><circle class="d-ink" cx="22" cy="10" r="2.2"/><circle class="d-ink" cx="30.5" cy="13.5" r="2.2"/></svg>leadership, across all three</span>
+      </div>
+      <noscript>
+        <p class="key-static"><span><i style="background:#2F6BFF"></i>cybersecurity</span><span><i style="background:#8A3FFC"></i>AI</span><span><i style="background:#F2A30F"></i>large-scale data analytics</span></p>
+      </noscript>
+    </div>
+
+    <div class="caps" id="caps" data-sel="">
+      <article class="cap cap-lead" data-in="blue violet amber">
+        <svg class="mark" viewBox="0 0 44 24" width="55" height="30" role="img" aria-label="Cybersecurity, AI and data analytics">
+          <circle class="d-blue" cx="4" cy="9" r="2.5"/><circle class="d-blue" cx="10" cy="5" r="2.5"/><circle class="d-blue" cx="9" cy="12.5" r="2.5"/>
+          <circle class="d-violet" cx="19" cy="15" r="2.5"/><circle class="d-violet" cx="25" cy="11.5" r="2.5"/><circle class="d-violet" cx="24" cy="19.5" r="2.5"/>
+          <circle class="d-amber" cx="34" cy="6" r="2.5"/><circle class="d-amber" cx="40" cy="9.5" r="2.5"/><circle class="d-amber" cx="35.5" cy="13" r="2.5"/>
+        </svg>
+        <h3>Analysis of noisy, incomplete data</h3>
+        <p>Most of my career has been one problem in different clothes: getting a clear answer out of enormous, incomplete, noisy data. Working out what is really on a network, or what an adversary is doing, from indirect traces rather than a clean view.</p>
+      </article>
+
+      <article class="cap" id="ai" data-in="violet">
+        <svg class="mark" viewBox="0 0 44 24" width="55" height="30" role="img" aria-label="AI">
+          <circle class="d-violet" cx="4" cy="9" r="2.5"/><circle class="d-violet" cx="10" cy="5" r="2.5"/><circle class="d-violet" cx="16.5" cy="8.5" r="2.5"/><circle class="d-violet" cx="7.5" cy="15.5" r="2.5"/><circle class="d-violet" cx="13.5" cy="14" r="2.5"/><circle class="d-violet" cx="19.5" cy="16" r="2.5"/>
+        </svg>
+        <h3>AI and machine learning</h3>
+        <p>Today I focus on applying AI and advanced analytics to turn complex telemetry and research ideas into scalable, deployable capabilities. <span>It started as machine learning for security problems (scalable and streaming classification), continued as machine learning on network telemetry, and now includes large language models: evaluating them, building retrieval-augmented generation around them, and orchestrating several models and agents on one task.</span></p>
+      </article>
+
+      <div class="cap-stack">
+      <article class="cap" data-in="amber">
+        <svg class="mark" viewBox="0 0 44 24" width="55" height="30" role="img" aria-label="Data analytics">
+          <circle class="d-amber" cx="4" cy="7" r="2.5"/><circle class="d-amber" cx="10.5" cy="10.5" r="2.5"/><circle class="d-amber" cx="16.5" cy="6.5" r="2.5"/><circle class="d-amber" cx="6.5" cy="16.5" r="2.5"/><circle class="d-amber" cx="13" cy="17.5" r="2.5"/><circle class="d-amber" cx="19.5" cy="13" r="2.5"/>
+        </svg>
+        <h3>Large-scale data systems</h3>
+        <p>I design and build the systems underneath the analysis: collection, pipelines, storage and query layers for datasets of hundreds of billions of records and petabyte-scale environments, on distributed and cloud infrastructure.</p>
+      </article>
+
+      <article class="cap" data-in="blue amber">
+        <svg class="mark" viewBox="0 0 44 24" width="55" height="30" role="img" aria-label="Cybersecurity and data analytics">
+          <circle class="d-blue" cx="4" cy="9" r="2.5"/><circle class="d-blue" cx="10" cy="5" r="2.5"/><circle class="d-blue" cx="9" cy="12.5" r="2.5"/>
+          <circle class="d-amber" cx="22" cy="12" r="2.5"/><circle class="d-amber" cx="28" cy="8.5" r="2.5"/><circle class="d-amber" cx="27" cy="16" r="2.5"/>
+        </svg>
+        <h3>Research-to-operations transition</h3>
+        <p>I take work from a research question, through a prototype, into an operational environment. <span>That includes the unglamorous parts: testing, deployment, and turning feedback from the people who use it into the next version.</span></p>
+      </article>
+      </div>
+
+      <div class="holds">
+        <p class="holds-legend">Leadership</p>
+        <article class="cap" id="government" data-in="">
+          <svg class="mark" viewBox="0 0 44 24" width="55" height="30" role="img" aria-label="Leadership, across all three fields">
+            <path class="o-ink" d="M22 2.5c9.5 0 19.5 2.6 19.5 9.6S31.5 21.5 22 21.5 2.5 19 2.5 12.1 12.5 2.5 22 2.5z"/>
+            <circle class="d-ink" cx="13" cy="12.5" r="2.2"/><circle class="d-ink" cx="22" cy="10" r="2.2"/><circle class="d-ink" cx="30.5" cy="13.5" r="2.2"/>
+          </svg>
+          <h3>Government R&amp;D leadership</h3>
+          <p>I have served as Principal Investigator on multiple DARPA-funded research programs. <span>I write the technical proposals that win the work, plan it, report to sponsors, and work directly with government program managers and the operators who end up using the result. I know how research gets funded, evaluated and transitioned inside the Department of War.</span></p>
+        </article>
+        <article class="cap" data-in="">
+          <svg class="mark" viewBox="0 0 44 24" width="55" height="30" role="img" aria-label="Leadership, across all three fields">
+            <path class="o-ink" d="M22 2.5c9.5 0 19.5 2.6 19.5 9.6S31.5 21.5 22 21.5 2.5 19 2.5 12.1 12.5 2.5 22 2.5z"/>
+            <circle class="d-ink" cx="13" cy="12.5" r="2.2"/><circle class="d-ink" cx="22" cy="10" r="2.2"/><circle class="d-ink" cx="30.5" cy="13.5" r="2.2"/>
+          </svg>
+          <h3>Research and engineering leadership</h3>
+          <p>As Chief Scientist I lead research and engineering teams: setting scientific direction, turning it into a plan people can execute, and connecting the science to the engineering. I also review for the field as a conference program committee member.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="record" aria-labelledby="h-record">
+    <h2 id="h-record">Professional record</h2>
+    <ul class="record">
+      <li>
+        <h3>PhD in Computer Science</h3>
+        <p>Georgia Institute of Technology, 2020. The <a href="https://hdl.handle.net/1853/64165">dissertation</a> is public.</p>
+      </li>
+      <li>
+        <h3>DARPA Riser, 2018</h3>
+        <p>One of 50 early-career researchers <a href="https://hg.gatech.edu/node/606794">selected by DARPA program managers</a> for DARPA's 60th anniversary symposium.</p>
+      </li>
+      <li>
+        <h3>Principal Investigator</h3>
+        <p>Managed DARPA-funded research and operational projects with budgets in the double-digit millions of dollars.</p>
+      </li>
+      <li>
+        <h3>Program committee service</h3>
+        <p>Annual Computer Security Applications Conference (ACSAC) in 2024, 2025 and 2026. Session chair for Network Security at ACSAC 2024.</p>
+      </li>
+      <li>
+        <h3>11 peer-reviewed papers</h3>
+        <div>
+        <ul class="profiles" aria-label="Publication profiles">
+          <li><a href="https://scholar.google.com/citations?user=_NXOvmwAAAAJ&amp;hl=en">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0000-0002-5617-7417">ORCID</a></li>
+          <li><a href="https://dblp.org/pid/181/5371.html">DBLP</a></li>
+        </ul>
+      <details>
+        <summary><span class="s-show">Show all 13 publications</span><span class="s-hide">Hide the publication list</span></summary>
+        <ol class="pubs">
+          <li><a class="t" href="https://doi.org/10.1109/RAID67961.2025.00041">From Concealment to Exposure: Understanding the Lifecycle and Infrastructure of APT Domains</a> Athanasios Avgetidis, Aaron Faulkenberry, Vinny Adjibi, Tillson Galloway, <strong>Panagiotis Kintis</strong>, Omar Alrawi, Zane Ma, Fabian Monrose, Angelos D. Keromytis, Roberto Perdisci, Manos Antonakakis. <span class="v">RAID 2025. Co-author.</span></li>
+          <li><a class="t" href="https://doi.org/10.1109/ICECCME62383.2024.10797094">Augmenting DNS-Based Security with NetFlow</a> Kevin Sam Tharayil, <strong>Panagiotis Kintis</strong>, Angelos D. Keromytis. <span class="v">IEEE ICECCME 2024. Second author.</span></li>
+          <li><a class="t" href="https://doi.org/10.1145/3564625.3564646">View from Above: Exploring the Malware Ecosystem from the Upper DNS Hierarchy</a> Aaron Faulkenberry, Athanasios Avgetidis, Zane Ma, Omar Alrawi, Charles Lever, <strong>Panagiotis Kintis</strong>, Fabian Monrose, Angelos D. Keromytis, Manos Antonakakis. <span class="v">ACSAC 2022. Co-author.</span></li>
+          <li><a class="t" href="https://www.ndss-symposium.org/ndss-paper/understanding-the-growth-and-security-considerations-of-ecs/">Understanding the Growth and Security Considerations of ECS</a> Athanasios Kountouras, <strong>Panagiotis Kintis</strong>, Athanasios Avgetidis, Thomas Papastergiou, Chaz Lever, Michalis Polychronakis, Manos Antonakakis. <span class="v">NDSS 2021. Second author.</span></li>
+          <li><a class="t" href="https://hdl.handle.net/1853/64165">Characterizing Network Infrastructure Using the Domain Name System</a> <strong>Panagiotis Kintis</strong>. <span class="v">PhD dissertation, Georgia Institute of Technology, 2020.</span></li>
+          <li><a class="t" href="https://doi.org/10.1145/3278532.3278565">An Empirical Study of the I2P Anonymity Network and its Censorship Resistance</a> Nguyen Phong Hoang, <strong>Panagiotis Kintis</strong>, Manos Antonakakis, Michalis Polychronakis. <span class="v">ACM IMC 2018. Second author.</span></li>
+          <li><a class="t" href="https://doi.org/10.1109/EuroSP.2018.00020">Security Risks in Asynchronous Web Servers: When Performance Optimizations Amplify the Impact of Data-Oriented Attacks</a> Micah Morton, Jan Werner, <strong>Panagiotis Kintis</strong>, Kevin Snow, Manos Antonakakis, Michalis Polychronakis, Fabian Monrose. <span class="v">IEEE EuroS&amp;P 2018. Co-author.</span></li>
+          <li><a class="t" href="https://doi.org/10.1145/3133956.3134002">Hiding in Plain Sight: A Longitudinal Study of Combosquatting Abuse</a> <strong>Panagiotis Kintis</strong>, Najmeh Miramirkhani, Charles Lever, Yizheng Chen, Rosa Romero-Gómez, Nikolaos Pitropakis, Nick Nikiforakis, Manos Antonakakis. <span class="v">ACM CCS 2017. First author.</span></li>
+          <li><a class="t" href="https://doi.org/10.1016/j.cose.2017.02.010">Measuring lower bounds of the financial abuse to online advertisers: A four year case study of the TDSS/TDL4 Botnet</a> Yizheng Chen, <strong>Panagiotis Kintis</strong>, Manos Antonakakis, Yacin Nadji, David Dagon, Michael Farrell. <span class="v">Computers &amp; Security, vol. 67, 2017. Second author.</span></li>
+          <li><a class="t" href="https://doi.org/10.1007/978-3-319-45719-2_9">Enabling Network Security Through Active DNS Datasets</a> Athanasios Kountouras, <strong>Panagiotis Kintis</strong>, Chaz Lever, Yizheng Chen, Yacin Nadji, David Dagon, Manos Antonakakis, Rodney Joffe. <span class="v">RAID 2016. Second author.</span></li>
+          <li><a class="t" href="https://doi.org/10.1007/978-3-319-40667-1_17">Understanding the Privacy Implications of ECS (Extended Abstract)</a> <strong>Panagiotis Kintis</strong>, Yacin Nadji, David Dagon, Michael Farrell, Manos Antonakakis. <span class="v">DIMVA 2016. First author.</span></li>
+          <li><a class="t" href="https://doi.org/10.1007/978-3-319-40667-1_12">Financial Lower Bounds of Online Advertising Abuse: A Four Year Case Study of the TDSS/TDL4 Botnet</a> Yizheng Chen, <strong>Panagiotis Kintis</strong>, Manos Antonakakis, Yacin Nadji, David Dagon, Wenke Lee, Michael Farrell. <span class="v">DIMVA 2016. Second author.</span></li>
+          <li><a class="t" href="https://www.ieee-security.org/TC/SP2016/poster-abstracts/54-poster_abstract.pdf">Secure and Scalable Identity Management for the Aviation Industry</a> <strong>Panagiotis Kintis</strong>, Athanasios Kountouras, Nikolaos Pitropakis, David Dagon, Manos Antonakakis, Chris Markou, Pascal Buchner. <span class="v">Poster, IEEE S&amp;P 2016. First author.</span></li>
+        </ol>
+      </details>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section wrap" id="background" aria-labelledby="h-bg">
+    <h2 id="h-bg">Background</h2>
+    <div class="bg">
+      <figure class="photo">
+        <img src="assets/playful-solo.jpg" width="168" height="210" alt="Panagiotis at an outdoor restaurant in a pink shirt, grinning, holding chopsticks above a stack of plates">
+        <figcaption>Outlier.<br>Left in on purpose.</figcaption>
+      </figure>
+      <div class="bio">
+        <p>My background combines cybersecurity research, machine learning, large-scale data analysis and systems engineering. During my PhD at Georgia Tech I studied how the Domain Name System can be used to characterize network infrastructure. Since then my work has continued across Internet measurement, network security and applied research.</p>
+        <p>I enjoy connecting the scientific and engineering sides of a problem: determining what to measure, building the systems to analyze it, and making the resulting insight useful.</p>
+        <p class="gloss">Voreas is the Greek word for the north wind. Astrolavos, my PhD lab, is Greek for astrolabe.</p>
+      </div>
+      <div class="cv">
+        <h3>Roles</h3>
+        <dl class="roles">
+          <dt>2021 to present</dt><dd>Chief Scientist, Voreas Laboratories</dd>
+          <dt>2023 to 2026</dt><dd>Research Engineer II, Georgia Institute of Technology (School of ECE, COEUS Center)</dd>
+          <dt>2020 to 2021</dt><dd>Principal Scientist, Voreas Laboratories</dd>
+          <dt>2014 to 2020</dt><dd>PhD researcher, Georgia Institute of Technology (Astrolavos Lab); graduate research and teaching roles</dd>
+          <dt>2015 to 2018</dt><dd>Internships during my PhD: IBM X-Force, Symantec, Infor and Notos Technologies</dd>
+        </dl>
+        <h3>Education</h3>
+        <ul class="edu">
+          <li>PhD, Computer Science, Georgia Institute of Technology, 2020. Advisor Manos Antonakakis; co-advisor Douglas Blough.</li>
+          <li>MSc, Information and Communication Systems Security, University of the Aegean, 2013.</li>
+          <li>Engineering Diploma, Information and Communication Systems Engineering, University of the Aegean, 2012.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="likes" aria-labelledby="h-likes">
+    <h2 id="h-likes">Things I like</h2>
+    <p class="likes-sub"><span class="stray" aria-hidden="true"></span>The grey points. None of this fits a cluster.</p>
+    <div class="likes">
+      <div class="likes-text">
+        <p>I love soccer, although I have not played in a while, and sports in general. I love fine dining, travel and time with friends. I also love my work.</p>
+        <p>And I love grabbing a coffee or a meal and talking about AI. If that sounds good, <a href="#contact">get in touch</a>.</p>
+      </div>
+      <ul class="teams" aria-label="Teams I support and who I travel with">
+        <li><img src="assets/logos/manchester-united.svg" width="54" height="55" alt="Manchester United"></li>
+        <li><img src="assets/logos/olympiacos.svg" width="43" height="55" alt="Olympiacos"></li>
+        <li><img src="assets/logos/georgia-tech.svg" width="60" height="38" alt="Georgia Tech"></li>
+        <li><img src="assets/logos/chiefs.svg" width="60" height="38" alt="Kansas City Chiefs"></li>
+        <li><img src="assets/logos/commanders.svg" width="71" height="38" alt="Washington Commanders"></li>
+        <li><img src="assets/logos/delta.svg" width="52" height="42" alt="Delta"></li>
+        <li><img src="assets/logos/marriott.svg" width="54" height="43" alt="Marriott"></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap" id="contact" aria-labelledby="h-contact">
+    <div class="contact">
+      <div>
+        <h2 id="h-contact">Contact</h2>
+        <p><span class="stray" aria-hidden="true"></span>If your problem does not fit one of the three clusters, write anyway.</p>
+      </div>
+      <ul class="links">
+        <li><a href="mailto:hello@kintis.me">hello@kintis.me</a></li>
+        <li><a href="https://www.linkedin.com/in/kintis">LinkedIn</a></li>
+        <li class="soon">CV (PDF)</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">Panagiotis Kintis, PhD. kintis.me</footer>
+
+<script>
+(function () {
+  'use strict';
+  var d = document;
+  var field = d.getElementById('field');
+  var canvas = d.getElementById('plot');
+  if (!field || !canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+  var tags = [].slice.call(d.querySelectorAll('#tags .tag'));
+  var keys = [].slice.call(d.querySelectorAll('.key .tag'));
+  var capsWrap = d.getElementById('caps');
+  var caps = [].slice.call(d.querySelectorAll('.cap'));
+  var pauseBtn = d.getElementById('pause');
+  var statusEl = d.getElementById('status');
+  var noteEl = d.getElementById('note');
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  var F = [
+    { key: 'blue', name: 'cybersecurity', rgb: [47, 107, 255], line: '47,107,255', tint: '238,243,255' },
+    { key: 'violet', name: 'AI', rgb: [138, 63, 252], line: '138,63,252', tint: '244,238,255' },
+    { key: 'amber', name: 'large-scale data analytics', rgb: [242, 163, 15], line: '184,116,0', tint: '254,245,225' }
+  ];
+  var GREY = [198, 202, 211];
+  var BASE = [[0.27, 0.32], [0.71, 0.36], [0.47, 0.725]];
+  var CYCLE = 18, HOLD0 = 3.2, HOLD1 = 12.6;
+
+  var S = { t: 0.9, clock: 0, cycle: 0, paused: false, userPaused: false, sel: -1, focus: false, visible: !d.hidden, inView: true, reduced: mq.matches };
+  if (S.reduced) S.t = 7;
+  var W = 0, H = 0, dpr = 1, N = 0, pts = [], cl = [], stat = null, raf = 0, last = 0;
+  var tagAlpha = -1;
+
+  function rng(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function clamp01(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function sm(x) { x = clamp01(x); return x * x * (3 - 2 * x); }
+  function ease(x) { x = clamp01(x); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+  function homes(c, n) {
+    var r = rng(977 + c * 7919), a = new Float32Array(n * 2);
+    for (var i = 0; i < n * 2; i++) a[i] = r();
+    return a;
+  }
+  function radiusAt(c, phi) {
+    var u = phi - c.th, x = c.b * Math.cos(u), y = c.a * Math.sin(u);
+    return c.a * c.b / Math.sqrt(x * x + y * y);
+  }
+
+  function build() {
+    var n = N, i, k;
+    if (!stat || stat.n !== n) {
+      var q = rng(4242);
+      stat = { n: n, jp: [], jq: [], jw: [], rad: [], e: [] };
+      var baseR = W < 520 ? 1.9 : 2.55;
+      for (i = 0; i < n; i++) {
+        stat.jp.push(q() * 6.283); stat.jq.push(q() * 6.283); stat.jw.push(1.1 + 1.2 * q());
+        stat.rad.push(baseR * (0.78 + 0.5 * q())); stat.e.push(q() * 0.5);
+      }
+    }
+    var A = homes(S.cycle, n), B = homes(S.cycle + 1, n), r = rng(31 + S.cycle * 104729);
+    var m = W < 520 ? 10 : 16;
+    var R0 = Math.min(W * 0.142, H * 0.182);
+    cl = BASE.map(function (b) {
+      var R = R0 * (0.93 + 0.13 * r()), asp = 1 + 0.22 * r();
+      return {
+        x: W * (b[0] + (r() - 0.5) * 0.04), y: H * (b[1] + (r() - 0.5) * 0.04),
+        a: R * Math.sqrt(asp), b: R / Math.sqrt(asp), R: R, th: r() * Math.PI, ph: r() * 6.283, w: r() * 6.283, mem: []
+      };
+    });
+    pts = [];
+    var far = [];
+    for (i = 0; i < n; i++) {
+      var p = {
+        i: i,
+        hx: m + A[2 * i] * (W - 2 * m), hy: m + A[2 * i + 1] * (H - 2 * m),
+        nx: m + B[2 * i] * (W - 2 * m), ny: m + B[2 * i + 1] * (H - 2 * m),
+        k: 0, dn: 1e9, dl: 0, ox: 0, oy: 0
+      };
+      for (k = 0; k < 3; k++) {
+        var dx = p.hx - cl[k].x, dy = p.hy - cl[k].y, dn = Math.sqrt(dx * dx + dy * dy) / cl[k].R;
+        if (dn < p.dn) { p.dn = dn; p.k = k; }
+      }
+      if (p.dn > 1.5) far.push(p);
+      pts.push(p);
+    }
+    for (i = far.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)), tmp = far[i]; far[i] = far[j]; far[j] = tmp; }
+    var nStray = Math.min(far.length, Math.round(n * 0.075));
+    for (i = 0; i < nStray; i++) far[i].k = -1;
+    for (i = 0; i < n; i++) if (pts[i].k >= 0) cl[pts[i].k].mem.push(pts[i]);
+    cl.forEach(function (c) {
+      var mem = c.mem, maxd = 0;
+      mem.forEach(function (p) { p.ang = Math.atan2(p.hy - c.y, p.hx - c.x); if (p.dn > maxd) maxd = p.dn; });
+      mem.sort(function (a, b) { return a.ang - b.ang; });
+      mem.forEach(function (p, idx) {
+        var phi = -Math.PI + 2 * Math.PI * (idx + 0.5) / mem.length + (r() - 0.5) * 0.25;
+        var rr = Math.min(1.22, Math.sqrt(-2 * Math.log(1 - r() * 0.999)) * 0.44);
+        var rad = rr * radiusAt(c, phi);
+        p.ox = rad * Math.cos(phi); p.oy = rad * Math.sin(phi);
+        p.dl = maxd ? Math.min(1, p.dn / maxd) : 0;
+      });
+    });
+    cl.forEach(function (c, k) {
+      var below = k === 2, edge = radiusAt(c, Math.PI / 2);
+      c.lx = c.x; c.ly = c.y + (below ? edge : -edge);
+    });
+    placeTags();
+  }
+
+  function placeTags() {
+    var keepL = pauseBtn && pauseBtn.offsetWidth ? pauseBtn.offsetLeft - 6 : W, keepT = pauseBtn ? pauseBtn.offsetTop - 6 : H;
+    tags.forEach(function (el, k) {
+      var c = cl[k]; if (!c) return;
+      var hw = el.offsetWidth / 2 + 6, hh = el.offsetHeight / 2 + 4;
+      var x = Math.max(hw, Math.min(W - hw, c.lx)), y = Math.max(hh, Math.min(H - hh, c.ly));
+      if (x + hw > keepL && y + hh > keepT) x = Math.max(hw, keepL - hw);
+      el.style.left = Math.round(x) + 'px'; el.style.top = Math.round(y) + 'px';
+    });
+  }
+
+  function size() {
+    var rect = field.getBoundingClientRect();
+    W = Math.max(200, Math.round(rect.width)); H = Math.max(200, Math.round(rect.height));
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    N = Math.max(170, Math.min(440, Math.round(W * H / 1230)));
+    build();
+  }
+
+  function draw() {
+    var t = S.t, clock = S.clock, k, i;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+
+    var oin = sm((t - 1.8) / 1.1), oout = sm((t - 13.0) / 1.0), oa = oin * (1 - oout);
+    if (oa > 0.01) {
+      for (k = 0; k < 3; k++) {
+        var c = cl[k], dim = S.sel >= 0 && S.sel !== k;
+        var sc = (1 + 0.2 * Math.pow(1 - oin, 2) + 0.07 * oout) * (1 + 0.018 * Math.sin(clock * 1.05 + c.ph)) * 1.04;
+        ctx.beginPath();
+        for (i = 0; i <= 60; i++) {
+          var phi = i / 60 * 6.2832;
+          var wob = 1 + 0.028 * Math.sin(3 * phi + clock * 0.5 + c.w) + 0.02 * Math.sin(2 * phi - clock * 0.37 + c.ph);
+          var rad = radiusAt(c, phi) * sc * wob;
+          var x = c.x + rad * Math.cos(phi), y = c.y + rad * Math.sin(phi);
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        if (!dim) { ctx.fillStyle = 'rgba(' + F[k].tint + ',' + (oa * 0.9).toFixed(3) + ')'; ctx.fill(); }
+        ctx.lineWidth = S.sel === k ? 2.25 : 1.5;
+        ctx.strokeStyle = 'rgba(' + F[k].line + ',' + (oa * (dim ? 0.28 : 0.78)).toFixed(3) + ')';
+        ctx.stroke();
+      }
+    }
+
+    var paths = [new Path2D(), new Path2D(), new Path2D(), new Path2D()], mixed = [];
+    for (i = 0; i < pts.length; i++) {
+      var p = pts[i], e = stat.e[i], x2, y2, g = 0;
+      var rel = ease((t - 13.3 - e) / 2.2);
+      if (p.k >= 0) {
+        var cc = cl[p.k], s = 1 + 0.018 * Math.sin(clock * 1.05 + cc.ph);
+        g = ease((t - 0.5 - 0.6 * p.dl) / 2.0);
+        x2 = p.hx + (cc.x + p.ox * s - p.hx) * g; y2 = p.hy + (cc.y + p.oy * s - p.hy) * g;
+      } else { x2 = p.hx; y2 = p.hy; }
+      x2 += (p.nx - x2) * rel; y2 += (p.ny - y2) * rel;
+      var ja = 3.4 - 2.1 * g * (1 - rel), w = stat.jw[i];
+      x2 += ja * Math.sin(clock * w + stat.jp[i]); y2 += ja * Math.cos(clock * w * 0.83 + stat.jq[i]);
+      var col = 0;
+      if (p.k >= 0 && !(S.sel >= 0 && S.sel !== p.k)) {
+        col = sm((t - 0.15 - 0.8 * p.dl) / 0.5) * (1 - sm((t - 13.2 - e) / 1.0));
+      }
+      var rr = stat.rad[i];
+      if (col <= 0.01) { paths[3].moveTo(x2 + rr, y2); paths[3].arc(x2, y2, rr, 0, 6.2832); }
+      else if (col >= 0.99) { paths[p.k].moveTo(x2 + rr, y2); paths[p.k].arc(x2, y2, rr, 0, 6.2832); }
+      else mixed.push(x2, y2, rr, p.k, col);
+    }
+    ctx.fillStyle = 'rgb(' + GREY.join(',') + ')'; ctx.fill(paths[3]);
+    for (k = 0; k < 3; k++) { ctx.fillStyle = 'rgba(' + F[k].rgb.join(',') + ',0.9)'; ctx.fill(paths[k]); }
+    for (i = 0; i < mixed.length; i += 5) {
+      var rgb = F[mixed[i + 3]].rgb, a = mixed[i + 4];
+      ctx.fillStyle = 'rgb(' + Math.round(GREY[0] + (rgb[0] - GREY[0]) * a) + ',' + Math.round(GREY[1] + (rgb[1] - GREY[1]) * a) + ',' + Math.round(GREY[2] + (rgb[2] - GREY[2]) * a) + ')';
+      ctx.beginPath(); ctx.arc(mixed[i], mixed[i + 1], mixed[i + 2], 0, 6.2832); ctx.fill();
+    }
+
+    var la = sm((t - 2.2) / 0.5) * (1 - sm((t - 12.9) / 0.5));
+    if (Math.abs(la - tagAlpha) > 0.015 || (la === 0 || la === 1) && la !== tagAlpha) {
+      tagAlpha = la;
+      tags.forEach(function (el) {
+        el.style.opacity = la.toFixed(2);
+        el.style.pointerEvents = la > 0.6 ? 'auto' : 'none';
+      });
+    }
+  }
+
+  function advance(dt) {
+    S.clock += dt;
+    if (S.focus && S.t >= HOLD1 - 0.4) return;
+    S.t += dt;
+    if (S.t >= CYCLE) { S.t -= CYCLE; S.cycle++; build(); }
+  }
+  function frame(now) {
+    raf = requestAnimationFrame(frame);
+    if (!last) { last = now; return; }
+    var dt = now - last;
+    if (dt < 32) return;
+    last = now;
+    advance(Math.min(dt, 100) / 1000);
+    draw();
+  }
+  function sync() {
+    var want = !S.paused && !S.reduced && S.visible && S.inView;
+    if (want && !raf) { last = 0; raf = requestAnimationFrame(frame); }
+    else if (!want && raf) { cancelAnimationFrame(raf); raf = 0; }
+  }
+  function toHold() { if (S.t < HOLD0 || S.t > HOLD1 - 0.4) S.t = HOLD0 + 0.2; }
+
+  function reflect() {
+    var key = S.sel >= 0 ? F[S.sel].key : '';
+    capsWrap.setAttribute('data-sel', key);
+    var count = 0;
+    caps.forEach(function (el) {
+      var on = !!key && (' ' + el.getAttribute('data-in') + ' ').indexOf(' ' + key + ' ') >= 0;
+      el.classList.toggle('is-on', on);
+      if (on) count++;
+    });
+    tags.concat(keys).forEach(function (el) {
+      el.setAttribute('aria-pressed', String(+el.getAttribute('data-k') === S.sel));
+    });
+    if (pauseBtn) {
+      pauseBtn.setAttribute('data-paused', String(S.paused));
+      pauseBtn.setAttribute('aria-label', S.paused ? 'Play animation' : 'Pause animation');
+      pauseBtn.title = S.paused ? 'Play animation' : 'Pause animation';
+    }
+    if (key) {
+      statusEl.innerHTML = '';
+      statusEl.appendChild(d.createTextNode((S.reduced ? 'Showing ' : 'Paused on ') + F[S.sel].name + ': ' + count + ' capabilities highlighted below. '));
+      var a = d.createElement('a'); a.href = '#capabilities'; a.textContent = 'See them'; statusEl.appendChild(a);
+    } else statusEl.textContent = '';
+    noteEl.classList.toggle('on', !!key);
+  }
+
+  function select(k) {
+    if (S.sel === k) { S.sel = -1; S.paused = S.userPaused; }
+    else { S.sel = k; S.paused = true; toHold(); }
+    reflect(); draw(); sync();
+  }
+  tags.concat(keys).forEach(function (el) {
+    el.addEventListener('click', function () { select(+el.getAttribute('data-k')); });
+  });
+  if (pauseBtn) pauseBtn.addEventListener('click', function () {
+    S.paused = !S.paused;
+    S.userPaused = S.paused;
+    if (!S.paused) S.sel = -1;
+    reflect(); draw(); sync();
+  });
+  var tagBox = d.getElementById('tags');
+  tagBox.addEventListener('focusin', function (ev) {
+    var kb = false;
+    try { kb = ev.target.matches(':focus-visible'); } catch (err) { kb = true; }
+    if (!kb) return;
+    S.focus = true; toHold(); draw();
+  });
+  tagBox.addEventListener('focusout', function () { S.focus = false; });
+
+  d.addEventListener('visibilitychange', function () { S.visible = !d.hidden; sync(); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { S.inView = en[0].isIntersecting; sync(); }, { threshold: 0.02 }).observe(field);
+  }
+  var onMq = function () { S.reduced = mq.matches; if (S.reduced) { S.t = 7; draw(); } reflect(); sync(); };
+  if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
+
+  var rt = 0;
+  function relayout() { size(); draw(); }
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(function () { clearTimeout(rt); rt = setTimeout(relayout, 120); }).observe(field);
+  } else window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(relayout, 120); });
+  if (d.fonts && d.fonts.ready) d.fonts.ready.then(function () { placeTags(); });
+
+  size(); reflect(); draw(); sync();
+})();
+</script>
+</body>
+</html>
