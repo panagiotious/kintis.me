@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="05480c88-c7ed-4532-a87e-94da6e5de890" data-domains="kintis.me"></script>
 <style>
 :root {
   --ground: #FFFFFF;
@@ -850,6 +851,69 @@ details[open] summary .s-hide { display: inline; }
 
   size(); reflect(); draw(); sync();
 })();
+</script>
+
+<script>
+/* Analytics events for Umami. Does nothing when the tracker is blocked or absent. */
+window.addEventListener('load', function () {
+  'use strict';
+  var d = document;
+  var umami = window.umami;
+  if (!umami || !d.documentElement.closest) return;
+
+  function track(name, data) {
+    try { umami.track(name, data); } catch (err) {}
+  }
+  function where(el) {
+    var s = el.closest('section[id]');
+    return s ? s.id : el.closest('header') ? 'header' : 'hero';
+  }
+
+  function onClick(ev) {
+    var t = ev.target;
+    var el = t && t.closest ? t.closest('a[href], button.tag') : null;
+    if (!el) return;
+    if (el.tagName === 'BUTTON') {
+      if (ev.type === 'click') track('field-select', { field: el.textContent.trim(), section: where(el) });
+      return;
+    }
+    var href = el.getAttribute('href');
+    if (href.charAt(0) === '#') track('nav', { target: href.slice(1), section: where(el) });
+    else if (href.indexOf('mailto:') === 0) track('email', { section: where(el) });
+    else if (el.host && el.host !== location.host) {
+      track('outbound', {
+        url: el.host + el.pathname,
+        section: where(el),
+        kind: el.closest('.social') ? 'social' : el.closest('.profiles') ? 'profile' : el.classList.contains('t') ? 'publication' : 'link'
+      });
+    }
+  }
+  d.addEventListener('click', onClick);
+  d.addEventListener('auxclick', function (ev) { if (ev.button === 1) onClick(ev); });
+
+  /* One tick per second of visible-tab time drives both the engagement marks and section views.
+     A section counts as viewed once it has held the viewport's midline, or been at least half
+     on screen, for two ticks in a row, so sections scrolled past on the way elsewhere do not count. */
+  var sections = [].slice.call(d.querySelectorAll('main section[id]'));
+  var marks = [15, 30, 60, 120, 300];
+  var held = {};
+  var secs = 0;
+  var timer = setInterval(function () {
+    if (d.hidden) return;
+    var h = window.innerHeight;
+    sections = sections.filter(function (s) {
+      var r = s.getBoundingClientRect();
+      var shown = Math.min(r.bottom, h) - Math.max(r.top, 0);
+      var on = (r.top <= h / 2 && r.bottom >= h / 2) || shown >= r.height / 2;
+      if (on && held[s.id]) { track('section-view', { section: s.id }); return false; }
+      held[s.id] = on;
+      return true;
+    });
+    secs += 1;
+    if (secs === marks[0]) track('engaged', { seconds: marks.shift() });
+    if (!marks.length && !sections.length) clearInterval(timer);
+  }, 1000);
+});
 </script>
 </body>
 </html>
